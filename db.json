@@ -1,0 +1,39 @@
+{
+  "staff": [
+    {
+      "staffId": "101",
+      "name": "Munna",
+      "email": "munna@gmail.com",
+      "mobile": "01521404561",
+      "id": 1
+    },
+    {
+      "staffId": "102",
+      "name": "Faruk",
+      "email": "faruk@gmail.com",
+      "mobile": "01717979531",
+      "id": 2
+    },
+    {
+      "staffId": "103",
+      "name": "Taslima",
+      "email": "taslima@gmail.com",
+      "mobile": "01736648160",
+      "id": 3
+    },
+    {
+      "staffId": "104",
+      "name": "Naima",
+      "email": "naima@gmail.com",
+      "mobile": "01996659032",
+      "id": 4
+    },
+    {
+      "staffId": "105",
+      "name": "Omar",
+      "email": "omar@gmail.com",
+      "mobile": "10875648911",
+      "id": 5
+    }
+  ]
+}

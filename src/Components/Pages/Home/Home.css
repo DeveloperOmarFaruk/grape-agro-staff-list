@@ -1,0 +1,129 @@
+.container-page {
+  margin: 5rem auto;
+}
+
+.home-title {
+  text-align: center;
+  padding: 0.8rem 0rem !important;
+  margin: 0rem !important;
+  background-color: var(--bs-deep-teal);
+}
+.home-title h3 {
+  font-size: 35px;
+  color: var(--bs-light);
+}
+
+.home-add-btn {
+  float: right;
+}
+
+.home-add-btn button {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 500;
+  justify-content: center;
+  line-height: 1.25;
+  letter-spacing: 2px;
+  margin: 10px auto;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.home-add-btn button:hover,
+.home-add-btn button:focus {
+  background-color: #fb8332;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.home-add-btn button:hover {
+  transform: translateY(-1px);
+}
+
+.home-add-btn button:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+/* Home Table */
+.home-table {
+  display: block !important;
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  white-space: nowrap !important;
+  height: 100vh;
+}
+.home-table-row-title {
+  background-color: var(--bs-deep-orange);
+}
+
+.home-table-row-title-item {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  letter-spacing: 2px !important;
+  color: var(--bs-light) !important;
+}
+
+.home-table-row-user-title {
+  background-color: var(--bs-cyan-white) !important;
+}
+
+.home-table-row-user-title-item {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  letter-spacing: 1px !important;
+  color: var(--bs-see-blue) !important;
+}
+
+.home-table-row-user-title-item-icon {
+  font-size: 17px !important;
+}
+
+/* Add Modal */
+.add-modal-form-title {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--bs-deep-orange);
+}
+
+.add-form-group {
+  margin: 15px auto;
+}
+
+.add-submit-btn {
+  background-color: var(--bs-deep-orange) !important;
+  border: none !important;
+}
+
+.add-submit-btn:hover {
+  background-color: var(--bs-orange) !important;
+}
+
+.edit-form-container {
+  display: block;
+  margin: auto;
+  width: 50%;
+}
+
+.edit-form-btns {
+  text-align: center;
+}
