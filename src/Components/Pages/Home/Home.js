@@ -23,7 +23,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
 const Home = () => {
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Add Form State and Function Area
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   const [addShow, setAddShow] = useState(false);
   const handleAddClose = () => setAddShow(false);
   const handleAddShow = () => setAddShow(true);
@@ -54,13 +56,16 @@ const Home = () => {
     setAddShow(false);
     SetStatus(true);
   }
-
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Edit Form State and Funcion Area
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   const [editShow, setEditShow] = useState(false);
   const handleEditClose = () => setEditShow(false);
   const handleEditShow = () => setEditShow(true);
 
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Staf Details Info Modal Page State and Funcion Area
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   const [infoShow, setInfoShow] = useState(false);
   const handleInfoClose = () => setInfoShow(false);
 
@@ -68,13 +73,17 @@ const Home = () => {
     setInfoShow(true);
   };
 
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Staff Data load API call State and Function Area
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   const [staff, SetStaff] = useState([]);
 
   useEffect(() => {
     async function getAllStaff() {
       try {
-        const responesAllStaff = await axios.get("http://localhost:3030/staff");
+        const responesAllStaff = await axios.get(
+          `http://localhost:3030/staff/`
+        );
         // console.log(responesStaff.data);
         SetStaff(responesAllStaff.data);
       } catch (error) {
@@ -84,18 +93,22 @@ const Home = () => {
     getAllStaff();
   }, []);
 
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Delete State and Function
-
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   const onDeleteStaff = async (id) => {
     await axios.delete(`http://localhost:3030/staff/${id}`);
-    var newDeleteStaff = staff.filter((item) => {
-      // console.log(item);
-      return item.id !== id;
-    });
-    SetStaff(newDeleteStaff);
+    SetStaff(
+      staff.filter((item) => {
+        return item.id !== id;
+      })
+    );
   };
 
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Auto relod after add form submit
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   if (status) {
     return <Home />;
   }
@@ -106,8 +119,9 @@ const Home = () => {
         <div className="home-add-btn">
           <button onClick={handleAddShow}>Add Staff</button>
         </div>
-
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
         {/* Staff List Start */}
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
         <Grid container justify="center" spacing={4}>
           <Grid item md={12} xs={12}>
             <TableContainer className="home-table">
@@ -247,9 +261,12 @@ const Home = () => {
             </TableContainer>
           </Grid>
         </Grid>
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
         {/* Staff List End */}
-
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
         {/* Staff Add Form Modal Start */}
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
         <div>
           <Modal show={addShow} onHide={handleAddClose}>
             <Modal.Header closeButton>
@@ -328,10 +345,12 @@ const Home = () => {
             </Modal.Footer>
           </Modal>
         </div>
-
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
         {/* Staff Add Form Modal End */}
-
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
         {/* Staff Edit Form Modal Start */}
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
         <div>
           <Modal show={editShow} onHide={handleEditClose}>
             <Modal.Header closeButton>
@@ -399,9 +418,12 @@ const Home = () => {
             </Modal.Footer>
           </Modal>
         </div>
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
         {/* Staff Edit Form Modal End */}
-
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
         {/* Staff Details info Modal Start */}
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
         <div>
           <Modal show={infoShow} onHide={handleInfoClose}>
             <Modal.Header closeButton>
@@ -422,7 +444,9 @@ const Home = () => {
             </Modal.Footer>
           </Modal>
         </div>
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
         {/* Staff Details info Modal End */}
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
       </div>
     </>
   );

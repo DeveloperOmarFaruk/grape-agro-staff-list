@@ -68,3 +68,223 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Project Details Road Map -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- Json Format -->
+
+{
+"staff": [
+{
+"staffId": "01736648160",
+"name": "Md Omar Faruk Tutul",
+"email": "omarfaruk18115@gmail.com",
+"mobile": "0173664816000",
+"id": 1
+},
+{
+"staffId": "017366481602",
+"name": "Md Omar Faruk Tutul",
+"email": "omarfaruk18115@gmail.com",
+"mobile": "01736648160",
+"id": 2
+},
+{
+"staffId": "017366481605",
+"name": "Omar Faruk",
+"email": "developer.omarfaruk@gmail.com",
+"mobile": "01736648160",
+"id": 3
+},
+{
+"staffId": "0173664816044",
+"name": "Omar Faruk",
+"email": "developer.omarfaruk@gmail.com",
+"mobile": "01736648160",
+"id": 4
+},
+{
+"staffId": "01521404561566",
+"name": "Md. Omar Faruk",
+"email": "developer.omarfaruk@gmail.com",
+"mobile": "01521404561",
+"id": 5
+},
+{
+"staffId": "5665",
+"name": "Md. Omar Faruk",
+"email": "developer.omarfaruk@gmail.com",
+"mobile": "01736648160",
+"id": 6
+},
+{
+"staffId": "017366481605563",
+"name": "Omar Faruk",
+"email": "developer.omarfaruk@gmail.com",
+"mobile": "3363636536363",
+"id": 7
+}
+]
+
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Staff Data load API call State and Function Area
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const [staff, SetStaff] = useState([]);
+
+useEffect(() => {
+async function getAllStaff() {
+try {
+const responesAllStaff = await axios.get(
+`http://localhost:3030/staff/`
+);
+// console.log(responesStaff.data);
+SetStaff(responesAllStaff.data);
+} catch (error) {
+console.log("Something is Wrong");
+}
+}
+getAllStaff();
+}, []);
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Add Form State and Function Area
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    const [staffAdd, setStaffAdd] = useState({
+    staffId: "",
+    name: "",
+    email: "",
+    mobile: "",
+
+});
+
+const [status, SetStatus] = useState();
+
+function inputAddFormChange(e) {
+setStaffAdd({
+...staffAdd,
+[e.target.name]: e.target.value,
+});
+}
+
+async function onAddSubmit(e) {
+e.preventDefault();
+try {
+await axios.post(`http://localhost:3030/staff`, staffAdd);
+} catch (error) {
+console.log("Something is Wrong");
+}
+setAddShow(false);
+SetStatus(true);
+}
+
+    if (status) {
+    return <Home />;
+
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// User specific id select for use
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const { id } = useParams();
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// back to path for use
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const navigate = useNavigate();
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Edit Form State and Funcion Area
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const [staffEdit, setStaffEdit] = useState({
+staffId: "",
+name: "",
+email: "",
+mobile: "",
+});
+
+function inputEditFormChange(e) {
+setStaffEdit({
+...staffEdit,
+[e.target.name]: e.target.value,
+});
+}
+
+useEffect(() => {
+async function getStaff() {
+try {
+const responesStaff = await axios.get(
+`http://localhost:3030/staff/${id}`
+);
+// console.log(responesStaff.data);
+setStaffEdit(responesStaff.data);
+} catch (error) {
+console.log("Something is Wrong");
+}
+}
+getStaff();
+}, [id]);
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Edit Form submit function
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+async function onEditSubmit(e) {
+e.preventDefault();
+try {
+await axios.put(`http://localhost:3030/staff/${id}`, staffEdit);
+} catch (error) {
+console.log("Something is Wrong");
+}
+
+    navigate("/");
+
+}
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// User specific id select for use
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const { id } = useParams();
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// back to path for use
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const navigate = useNavigate();
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Staff Data load API call State and Function Area
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const [staff, SetStaff] = useState([]);
+
+useEffect(() => {
+async function getStaff() {
+try {
+const responesStaff = await axios.get(
+`http://localhost:3030/staff/${id}`
+);
+// console.log(responesStaff.data);
+SetStaff(responesStaff.data);
+} catch (error) {
+console.log("Something is Wrong");
+}
+}
+getStaff();
+}, [id]);
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ID pass
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!-- <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/view/:id" element={<View />} />
+        <Route path="/edit/:id" element={<Edit />} />
+      </Routes> -->

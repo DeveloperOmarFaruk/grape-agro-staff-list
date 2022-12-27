@@ -6,21 +6,25 @@ import axios from "axios";
 import TextField from "@mui/material/TextField";
 
 const Edit = () => {
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // User specific id select for use
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   const { id } = useParams();
 
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // back to path for use
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   const navigate = useNavigate();
 
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Edit Form State and Funcion Area
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   const [staffEdit, setStaffEdit] = useState({
     staffId: "",
     name: "",
     email: "",
     mobile: "",
   });
-
-  //   const [status, SetStatus] = useState();
 
   function inputEditFormChange(e) {
     setStaffEdit({
@@ -44,7 +48,9 @@ const Edit = () => {
     getStaff();
   }, [id]);
 
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Edit Form submit function
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   async function onEditSubmit(e) {
     e.preventDefault();
